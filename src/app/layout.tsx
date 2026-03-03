@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  // TODO: Replace OG image with designed version before production launch
 }
 
 export default function RootLayout({
