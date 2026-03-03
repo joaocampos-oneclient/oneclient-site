@@ -1,0 +1,29 @@
+---
+title: "Building AI Infrastructure: Lessons from the Trenches"
+slug: "building-ai-infrastructure"
+excerpt: "What we learned building production AI systems across five verticals in under a year."
+publishedAt: "2026-02-20"
+author: "João"
+locale: "en"
+tags: ["ai", "infrastructure", "engineering"]
+---
+
+## The Myth of the General-Purpose AI
+
+Every founder we talk to wants the same thing: an AI that understands their business. The problem is that "understanding" is not a feature you can bolt on. It requires deep vertical knowledge, custom data pipelines, and months of iteration.
+
+We learned this the hard way. Our first attempt was a horizontal platform — a general-purpose AI layer that any business could plug into. It worked in demos. It failed in production.
+
+## What Actually Works
+
+The breakthrough came when we stopped trying to be general and started going deep. Each vertical we entered taught us something new about what production AI actually requires:
+
+- **Data quality matters more than model size.** A well-curated dataset with 10K examples outperforms a noisy dataset with 1M examples every time.
+- **Latency is a feature.** When your AI takes 8 seconds to respond, users leave. When it responds in 800ms, they forget they're talking to a machine.
+- **The last mile is the hardest.** Getting an AI to 80% accuracy is easy. Getting it to 95% requires domain expertise that no amount of prompt engineering can replace.
+
+## The Infrastructure Bet
+
+We're betting that the future belongs to companies that own their vertical AI infrastructure — not companies that rent generic models from cloud providers. The economics are clear: custom infrastructure costs more upfront but compounds over time. Generic APIs get cheaper but never get smarter about your specific domain.
+
+This is why we build with partners who know their markets. They bring the domain knowledge. We bring the engineering. Together, we build something that neither could build alone.

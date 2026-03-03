@@ -1,0 +1,71 @@
+---
+title: "Building in Public: Why We Chose MDX for Signal"
+slug: "hello-world"
+excerpt: "Our first Signal post — a look at why we're building our blog with MDX and what it means for content velocity."
+publishedAt: "2026-03-03"
+author: "Joao"
+locale: "en"
+tags: ["engineering", "signal", "infrastructure"]
+---
+
+## Why Signal Exists
+
+Signal is our blog. It's where we share what we're paying attention to — in AI, in infrastructure, in the markets we serve.
+
+We built it with MDX because content should be as composable as code. Every post is a file. Every component is reusable. No CMS, no database, no vendor lock-in.
+
+### The Stack Behind Signal
+
+Signal runs on a simple stack:
+
+- **Next.js 14** with App Router and static generation
+- **MDX** via `next-mdx-remote` for rich content
+- **Tailwind CSS** for typography and layout
+- **Vercel** for hosting with edge delivery
+
+Here's how we load a post:
+
+```typescript
+const post = await getPost(slug, locale)
+if (!post) return notFound()
+```
+
+The entire blog engine fits in a single `lib/mdx.ts` file — about 60 lines of code.
+
+<Callout type="info">
+Every Signal post is statically generated at build time and revalidated every hour via ISR. This means near-instant page loads with always-fresh content.
+</Callout>
+
+## What We Will Write About
+
+Signal will cover three themes:
+
+1. **AI Infrastructure** — How we build and operate AI systems at scale
+2. **Vertical Markets** — Lessons from building for healthcare, real estate, and communications
+3. **Engineering Culture** — How small teams can ship world-class products
+
+### A Note on Quality
+
+We'd rather publish one excellent post per month than four mediocre ones per week. Every post in Signal should be worth the reader's time.
+
+> "The best writing is rewriting." — E.B. White
+
+<Callout type="warning">
+Signal is in its early days. The format and frequency will evolve as we find our rhythm. Expect changes.
+</Callout>
+
+---
+
+## Technical Details
+
+For those interested in the implementation, here are some specifics:
+
+- Posts live in `content/signal/{locale}/` as `.mdx` files
+- Frontmatter is parsed with `gray-matter`
+- MDX is compiled server-side with `compileMDX` from `next-mdx-remote/rsc`
+- Custom components like `Callout` and `Image` are available in every post
+- Code blocks use [Geist Mono](https://vercel.com/font) for a clean, consistent look
+
+The blog supports full bilingual content — English and Portuguese — with locale-aware routing and fallback behavior.
+
+That's it for now. Welcome to Signal.
