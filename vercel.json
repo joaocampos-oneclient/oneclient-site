@@ -4,7 +4,7 @@
   "outputDirectory": ".",
   "installCommand": null,
   "cleanUrls": true,
-  "trailingSlash": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/signal", "destination": "/signal/index.html" },
     { "source": "/verticals", "destination": "/verticals/index.html" }
