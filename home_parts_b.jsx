@@ -22,7 +22,16 @@ const Verticals = () => {
       <div className="vert-grid" ref={gridRef}>
         {VERTICALS.map((v, i) => (
           <Reveal key={v.name} delay={i * 60} y={24} className="vert-card-wrap">
-            <a className="vert-card" href="#">
+            <a className="vert-card" href={{
+              AdPilot: '/verticals/adpilot.html',
+              'Clinik One': '/verticals/clinik-one.html',
+              'Robot SaaS': '/verticals/robot-saas.html',
+              'RegenX Academy': '/verticals/regenx-academy.html',
+              'Unlocked Miami': '/verticals/unlocked-miami.html',
+              Gaia: '/verticals/gaia.html',
+              'USX Peptides': '/verticals/usx-peptides.html',
+              Poli: '/verticals/poli.html',
+            }[v.name] || '#'}>
               <div className="name">{v.name}</div>
               <div className="desc">{v.desc}</div>
             </a>
@@ -179,13 +188,13 @@ const Signal = () => (
         <Reveal y={24}><div className="eyebrow">Signal</div></Reveal>
         <Reveal y={32} delay={80}><h2 className="h-lg" style={{ marginTop: 16 }}>A point of view on AI and vertical markets.</h2></Reveal>
       </div>
-      <Reveal y={20} delay={200}><a className="text-link" href="#">Read Signal <span className="arr">→</span></a></Reveal>
+      <Reveal y={20} delay={200}><a className="text-link" href="/signal/index.html">Read Signal <span className="arr">→</span></a></Reveal>
     </div>
     <div className="signal-viewport">
       <div className="signal-track">
         {[...ARTICLES, ...ARTICLES].map((a, i) => (
           <Reveal key={i} delay={(i % ARTICLES.length) * 80} y={24} className="article-wrap">
-            <a className="article" href="#">
+            <a className="article" href="/signal/generic-software-is-ending.html">
               <div className="article-cover">
                 <ArticleCover variant={a.cover} seed={i + 1} />
               </div>
