@@ -1,0 +1,232 @@
+/* About — inherits from poli.css (→ home.css). Extensions for About-only elements. */
+@import url('./verticals/poli.css');
+
+/* Tighter max on inner, since About is text-dense */
+.ab-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; padding: 0 40px; }
+.ab-inner--wide { max-width: 1240px; }
+
+/* ------------------------------------------------------------------ */
+/* Hero — extends pl-sec--first pattern but with more breathing room  */
+/* ------------------------------------------------------------------ */
+.ab-hero {
+  min-height: calc(100vh - 60px);
+  padding: clamp(32px, 6vh, 80px) 40px clamp(60px, 8vh, 120px);
+  display: flex; align-items: center;
+  position: relative;
+}
+.ab-hero-inner {
+  max-width: 1240px; width: 100%;
+  margin: 0 auto;
+  position: relative; z-index: 2;
+  padding-top: 40px;
+}
+.ab-hero .pl-h1 {
+  font-size: clamp(52px, 6.8vw, 92px);
+  max-width: 20ch;
+  line-height: 0.98;
+}
+.ab-hero .pl-lead {
+  max-width: 58ch;
+  font-size: clamp(18px, 1.4vw, 22px);
+  margin-top: 40px;
+}
+
+/* Two-stage hero reveal: spans just set color + display */
+.ab-line {
+  display: block;
+}
+.ab-line--2 {
+  color: var(--fg-2);
+}
+
+/* ------------------------------------------------------------------ */
+/* Section shell overrides                                            */
+/* ------------------------------------------------------------------ */
+.ab-sec {
+  padding: clamp(100px, 14vh, 160px) 40px;
+  border-top: 1px solid var(--divider);
+  position: relative;
+}
+.ab-sec-inner {
+  max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+
+.ab-h2-triple {
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 1.04; letter-spacing: -0.028em;
+  font-weight: 500; color: var(--fg-0);
+  margin: 0 0 32px; text-wrap: balance;
+  max-width: 22ch;
+}
+.ab-h2-triple .em { color: var(--fg-2); font-style: normal; font-weight: 500; }
+
+/* ------------------------------------------------------------------ */
+/* SECTION 02 — Stat row                                              */
+/* ------------------------------------------------------------------ */
+.ab-stats {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 900px;
+}
+.ab-stat {
+  padding: 28px 36px 28px 0;
+  border-right: 1px solid var(--divider);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ab-stat:nth-child(n+2) { padding-left: 36px; }
+.ab-stat:last-child { border-right: 0; }
+.ab-stat-num {
+  font-size: clamp(44px, 5.2vw, 64px);
+  font-weight: 500; color: var(--fg-0);
+  line-height: 1; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.ab-stat-num--text {
+  /* Same visual weight as numeric stats, but word-appropriate */
+  font-variant-numeric: normal;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.ab-stat-lbl {
+  font-size: 14px; line-height: 1.45;
+  color: var(--fg-2);
+  max-width: 20ch;
+}
+
+/* ------------------------------------------------------------------ */
+/* SECTION 03 — Operator                                              */
+/* ------------------------------------------------------------------ */
+.ab-operator-para {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.5;
+  color: var(--fg-2);
+  max-width: 68ch;
+}
+.ab-operator-para b {
+  color: var(--fg-0); font-weight: 500;
+}
+.ab-attribution {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  max-width: 640px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+}
+.ab-attribution b { color: var(--fg-0); font-weight: 500; letter-spacing: 0.08em; }
+.ab-attribution .sep { color: var(--fg-mute); opacity: 0.5; }
+
+/* ------------------------------------------------------------------ */
+/* SECTION 04 — Principles grid                                       */
+/* ------------------------------------------------------------------ */
+.ab-principles {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+}
+.ab-principle {
+  background: #0a0a0a;
+  padding: 44px 44px 48px;
+  display: flex; flex-direction: column; gap: 16px;
+  position: relative;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out),
+              background 220ms var(--ease-out);
+}
+.ab-principle.is-in { opacity: 1; transform: translateY(0); }
+.ab-principle:hover {
+  background: #0d0d0d;
+}
+.ab-principle-num {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.12em; color: var(--fg-mute);
+  margin-bottom: 4px;
+}
+.ab-principle-title {
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 500; color: var(--fg-0);
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin: 0;
+}
+.ab-principle-body {
+  font-size: 16px; line-height: 1.55;
+  color: var(--fg-2);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* SECTION 05 — The Line We Hold — two-stage like hero                */
+/* ------------------------------------------------------------------ */
+.ab-line-headline {
+  font-size: clamp(40px, 4.8vw, 60px);
+  line-height: 1.0; letter-spacing: -0.03em;
+  font-weight: 500; color: var(--fg-0);
+  margin: 0 0 32px; text-wrap: balance;
+  max-width: 20ch;
+}
+.ab-line-headline .ab-line--2 { color: var(--fg-2); }
+
+/* ------------------------------------------------------------------ */
+/* SECTION 06 — Conversation (centered)                               */
+/* ------------------------------------------------------------------ */
+.ab-conv {
+  padding: clamp(120px, 18vh, 200px) 40px clamp(100px, 14vh, 180px);
+  border-top: 1px solid var(--divider);
+  text-align: center;
+  position: relative;
+}
+.ab-conv-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 2;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+.ab-conv-inner.is-in { opacity: 1; transform: translateY(0); }
+.ab-conv .pl-eyebrow { justify-content: center; display: inline-flex; }
+.ab-conv h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 500; line-height: 1.05;
+  letter-spacing: -0.025em; color: var(--fg-0);
+  margin: 0 auto 28px;
+  max-width: 20ch; text-wrap: balance;
+}
+.ab-conv p {
+  font-size: clamp(16px, 1.25vw, 18px);
+  color: var(--fg-2); line-height: 1.55;
+  max-width: 38ch; margin: 0 auto 40px;
+}
+.ab-conv .pl-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 17px;
+  color: var(--fg-0);
+  padding: 14px 2px;
+  border-bottom: 1px solid var(--fg-0);
+  transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), gap 220ms var(--ease-out);
+}
+.ab-conv .pl-cta:hover { gap: 14px; color: #fff; border-color: #fff; }
+.ab-conv .pl-cta .arr { transition: transform 220ms var(--ease-out); }
+.ab-conv .pl-cta:hover .arr { transform: translateX(4px); }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                         */
+/* ------------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .ab-hero, .ab-sec, .ab-conv { padding-left: 20px; padding-right: 20px; }
+  .ab-stats { grid-template-columns: 1fr; gap: 0; }
+  .ab-stat { border-right: 0; border-bottom: 1px solid var(--divider); padding: 24px 0; }
+  .ab-stat:nth-child(n+2) { padding-left: 0; }
+  .ab-stat:last-child { border-bottom: 0; }
+  .ab-principles { grid-template-columns: 1fr; }
+  .ab-principle { padding: 36px 28px 40px; }
+}

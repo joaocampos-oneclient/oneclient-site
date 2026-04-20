@@ -1,0 +1,93 @@
+/* Clinik One-specific additions — agenda widget styling */
+
+.co-agenda {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.co-agenda-head {
+  display: grid;
+  grid-template-columns: 56px 1.1fr 1.4fr 100px;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  color: var(--fg-mute);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.co-agenda-body {
+  padding: 4px 0;
+  max-height: 420px;
+  overflow: hidden;
+}
+
+.co-row {
+  display: grid;
+  grid-template-columns: 56px 1.1fr 1.4fr 100px;
+  gap: 12px;
+  padding: 9px 16px;
+  align-items: center;
+  border-left: 2px solid transparent;
+  transition: background 240ms var(--ease-out), border-color 240ms var(--ease-out);
+}
+.co-row.hi {
+  background: rgba(107, 255, 158, 0.04);
+  border-left-color: #6bff9e;
+}
+.co-row.warn.hi {
+  background: rgba(255, 180, 80, 0.05);
+  border-left-color: #ffb450;
+}
+
+.co-row .ts {
+  color: var(--fg-1);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.co-row .who {
+  color: var(--fg-0);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.co-row .proc {
+  color: var(--fg-2);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.co-row .tag {
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: var(--fg-mute);
+  text-align: right;
+}
+.co-row .tag.ok { color: #6bff9e; }
+.co-row .tag.warn { color: #ffb450; }
+.co-row .tag.diff-up { color: #8ab4ff; }
+
+.co-agenda-foot {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.3);
+  color: var(--fg-mute);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+}
+
+/* Tighter on narrower viewports */
+@media (max-width: 1100px) {
+  .co-agenda-head,
+  .co-row {
+    grid-template-columns: 52px 1fr 1.2fr 84px;
+    gap: 10px;
+  }
+  .co-row .who, .co-row .proc { font-size: 12px; }
+}

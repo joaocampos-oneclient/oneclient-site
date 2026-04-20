@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Verticals — hero grid · OneClient</title>
+<link rel="icon" type="image/svg+xml" href="../../../assets/app-icon.svg" />
+<style>
+  :root {
+    --bg: #050505;
+    --fg: #fafafa;
+    --fg-2: #a6a6a6;
+    --fg-mute: #555;
+    --border: rgba(255,255,255,0.08);
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--sans);
+    font-feature-settings: 'ss01','cv11';
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .masthead h1 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .masthead .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
+  }
+  .masthead .right {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-2);
+    letter-spacing: 0.06em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .cell {
+    position: relative;
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    transition: border-color 160ms ease, transform 160ms ease;
+  }
+  .cell:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .cell .frame {
+    position: absolute;
+    inset: 0;
+    transform-origin: top left;
+    pointer-events: none;
+    border: 0;
+  }
+  .cell .scrim {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 14px 16px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .cell .label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .cell .tag {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
+  }
+  .cell .tag.market { color: #6bff9e; }
+  .cell .tag.client { color: #8ab4ff; }
+  .cell a.cover {
+    position: absolute; inset: 0; z-index: 3;
+    display: block;
+  }
+
+  @media (max-width: 1280px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .legend {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--fg-mute);
+  }
+  .legend .sw {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend .sw i {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .legend .sw.market i { background: #6bff9e; }
+  .legend .sw.client i { background: #8ab4ff; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="masthead">
+    <div>
+      <div class="kicker">OneClient · Verticals · 8 pages</div>
+      <h1 style="margin-top: 6px;">Hero comparison grid</h1>
+    </div>
+    <div class="right">Click any tile to open the full page</div>
+  </header>
+
+  <div id="grid" class="grid"></div>
+
+  <div class="legend">
+    <span class="sw market"><i></i> Market-case · OneClient vertical, operated end-to-end</span>
+    <span class="sw client"><i></i> Client case · OneClient-built infrastructure for a partner</span>
+  </div>
+</div>
+
+<script>
+  const CELLS = [
+    { href: 'adpilot.html',         label: 'AdPilot',        variant: 'market' },
+    { href: 'clinik-one.html',      label: 'Clinik One',     variant: 'market' },
+    { href: 'poli.html',            label: 'Poli',           variant: 'client' },
+    { href: 'regenx-academy.html',  label: 'RegenX Academy', variant: 'client' },
+    { href: 'unlocked-miami.html',  label: 'Unlocked Miami', variant: 'client' },
+    { href: 'usx-peptides.html',    label: 'USX Peptides',   variant: 'client' },
+    { href: 'gaia.html',            label: 'Gaia',           variant: 'client' },
+    { href: 'robot-saas.html',      label: 'Robot SaaS',     variant: 'market' },
+  ];
+
+  // Render cells. Each iframe is rendered at 1680px wide and scaled down to fit the cell.
+  const RENDER_W = 1680;
+  const RENDER_H = 945;   // 16:9 of 1680
+  const grid = document.getElementById('grid');
+  const cellTpl = (c) => `
+    <div class="cell" data-variant="${c.variant}">
+      <iframe class="frame" src="${c.href}" width="${RENDER_W}" height="${RENDER_H}" title="${c.label}" scrolling="no"></iframe>
+      <div class="scrim">
+        <span class="label">${c.label}</span>
+        <span class="tag ${c.variant}">${c.variant === 'market' ? 'Market-case' : 'Client case'}</span>
+      </div>
+      <a class="cover" href="${c.href}" target="_blank" rel="noopener"></a>
+    </div>
+  `;
+  grid.innerHTML = CELLS.map(cellTpl).join('');
+
+  // Scale each iframe so its 1680×945 content fills the cell width.
+  const fit = () => {
+    document.querySelectorAll('.cell').forEach(cell => {
+      const w = cell.clientWidth;
+      const h = cell.clientHeight;
+      const scale = w / RENDER_W;
+      const frame = cell.querySelector('.frame');
+      frame.style.transform = `scale(${scale})`;
+      frame.style.width  = RENDER_W + 'px';
+      frame.style.height = (h / scale) + 'px';
+    });
+  };
+  fit();
+  window.addEventListener('resize', fit);
+  // Refit after iframes load. Also force-reveal content inside each iframe —
+  // IntersectionObserver won't fire reliably inside scaled iframes, so we just flip every .reveal to is-in.
+  const bootFrame = (f) => {
+    try {
+      const d = f.contentDocument;
+      if (!d) return;
+      const apply = () => {
+        d.querySelectorAll('.reveal').forEach(r => r.classList.add('is-in'));
+      };
+      apply();
+      // Re-apply a couple of times because some components render after a tick.
+      setTimeout(apply, 300);
+      setTimeout(apply, 1200);
+      setTimeout(apply, 2500);
+    } catch (e) { /* cross-origin not possible here, same origin */ }
+  };
+  document.querySelectorAll('iframe.frame').forEach(f => {
+    f.addEventListener('load', () => { fit(); bootFrame(f); });
+    if (f.contentDocument && f.contentDocument.readyState === 'complete') bootFrame(f);
+  });
+</script>
+</body>
+</html>

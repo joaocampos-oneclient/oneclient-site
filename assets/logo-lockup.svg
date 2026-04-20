@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none">
+  <g transform="translate(0,0)" fill="currentColor" fill-rule="evenodd">
+    <path d="&#xA;      M 60 8  A 52 52 0 0 1 112 60  L 92 60  A 32 32 0 0 0 60 28  Z&#xA;      M 112 60 A 52 52 0 0 1 60 112 L 60 92  A 32 32 0 0 0 92 60  Z&#xA;      M 60 112 A 52 52 0 0 1 8 60   L 28 60  A 32 32 0 0 0 60 92  Z&#xA;      M 8 60   A 52 52 0 0 1 60 8   L 60 28  A 32 32 0 0 0 28 60  Z&#xA;    "></path>
+  </g>
+  <text x="148" y="82" font-family="Geist, ui-sans-serif, system-ui, sans-serif" font-size="72" letter-spacing="-2.2" fill="currentColor">
+    <tspan font-weight="600">one</tspan><tspan font-weight="300">client</tspan>
+  </text>
+</svg>

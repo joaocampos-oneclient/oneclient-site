@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" fill="none">
+  <text x="0" y="70" font-family="Geist, ui-sans-serif, system-ui, sans-serif" font-size="72" letter-spacing="-2.2" fill="currentColor">
+    <tspan font-weight="600">one</tspan><tspan font-weight="300">client</tspan>
+  </text>
+</svg>

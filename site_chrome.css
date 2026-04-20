@@ -1,0 +1,41 @@
+/* ------------------------------------------------------------------ */
+/* site_chrome.css — canonical nav + footer tweaks                    */
+/* Loaded AFTER each page's own CSS so these win.                     */
+/* ------------------------------------------------------------------ */
+
+/* Active nav state: subtle underline */
+.nav-links a.is-active,
+.nav-contact.is-active {
+  color: var(--fg-0);
+  position: relative;
+}
+.nav-links a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.nav-contact.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.nav-contact {
+  position: relative;
+}
+
+/* Ghost PT — present but visually subdued, signals "coming" */
+.lang em.lang-ghost,
+.footer-bottom em.lang-ghost {
+  font-style: normal;
+  color: var(--fg-mute);
+  opacity: 0.45;
+  cursor: not-allowed;
+}

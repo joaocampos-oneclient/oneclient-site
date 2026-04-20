@@ -1,0 +1,220 @@
+/* Verticals Index — extends poli.css (home.css vars inherited) */
+@import url('./poli.css');
+
+/* ---------------- Hero ---------------- */
+.vix-hero {
+  min-height: calc(100vh - 60px);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 40px;
+  position: relative;
+}
+.vix-hero-inner {
+  max-width: 1240px; width: 100%;
+  margin: 0 auto;
+  position: relative; z-index: 2;
+  padding-top: 40px; padding-bottom: 80px;
+}
+.vix-hero .pl-h1 {
+  font-size: clamp(52px, 6.6vw, 88px);
+  max-width: 18ch;
+}
+.vix-hero .pl-lead {
+  max-width: 56ch;
+  font-size: clamp(18px, 1.4vw, 22px);
+}
+
+/* ---------------- Grid section ---------------- */
+.vix-grid-sec {
+  padding: 120px 40px 140px;
+  border-top: 1px solid var(--divider);
+  position: relative;
+}
+.vix-grid-inner {
+  max-width: 1320px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.vix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 64px;
+}
+
+/* ---------------- Card ---------------- */
+.vix-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 44px 44px 40px;
+  min-height: 380px;
+  background: rgba(10,10,10,0.58);
+  border: 1px solid var(--border, #212121);
+  border-radius: 8px;
+  color: inherit; text-decoration: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition:
+    border-color 280ms var(--ease-out, cubic-bezier(.2,.7,.2,1)),
+    transform 280ms var(--ease-out, cubic-bezier(.2,.7,.2,1)),
+    background 280ms var(--ease-out, cubic-bezier(.2,.7,.2,1));
+  overflow: hidden;
+}
+.vix-card::before {
+  /* subtle top edge highlight */
+  content: ''; position: absolute; inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.vix-card:hover {
+  border-color: #3a3a3a;
+  transform: scale(1.006);
+  background: rgba(14,14,14,0.7);
+}
+
+/* Status pill */
+.vix-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fg-2, #8a8a8a);
+  padding: 6px 10px;
+  border: 1px solid var(--border, #212121);
+  border-radius: 999px;
+  align-self: flex-start;
+  background: rgba(0,0,0,0.4);
+}
+.vix-pill .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #4a4a4a;
+}
+.vix-pill--live { color: #bcf2cf; border-color: rgba(107,255,158,0.28); }
+.vix-pill--live .dot {
+  background: #6bff9e; box-shadow: 0 0 10px rgba(107,255,158,0.55);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+/* Pulse-once on reveal */
+.vix-card.is-in .vix-pill {
+  animation: vixPillIntro 520ms cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes vixPillIntro {
+  0%   { transform: scale(0.94); opacity: 0; }
+  60%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Card headings */
+.vix-name {
+  font-size: clamp(28px, 2.4vw, 36px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  font-weight: 500; color: var(--fg-0, #f4f4f4);
+  margin: 24px 0 10px;
+  text-wrap: balance;
+}
+.vix-cat {
+  font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--fg-mute, #6a6a6a);
+  margin-bottom: 22px;
+}
+.vix-desc {
+  font-size: clamp(16px, 1.1vw, 18px); line-height: 1.55;
+  color: var(--fg-2, #aaa);
+  max-width: 52ch;
+  margin: 0 0 32px;
+  text-wrap: pretty;
+}
+
+/* Meta row at bottom */
+.vix-meta {
+  margin-top: auto;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 10px 16px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--fg-mute, #6a6a6a);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.vix-meta .sep { color: #3a3a3a; }
+.vix-meta .arrow {
+  position: absolute; right: 0; bottom: 22px;
+  font-family: var(--font-mono); font-size: 18px;
+  color: var(--fg-2, #aaa);
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out);
+}
+.vix-card:hover .vix-meta .arrow {
+  opacity: 1; transform: translateX(0);
+}
+
+/* Cascade reveal (card-level) */
+.vix-card {
+  opacity: 0; transform: translateY(24px) scale(0.98);
+  transition:
+    opacity 620ms cubic-bezier(.2,.7,.2,1),
+    transform 620ms cubic-bezier(.2,.7,.2,1),
+    border-color 280ms var(--ease-out),
+    background 280ms var(--ease-out);
+}
+.vix-card.is-in { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ---------------- Common layer section ---------------- */
+.vix-common {
+  padding: 140px 40px;
+  border-top: 1px solid var(--divider);
+  position: relative;
+}
+.vix-common-inner {
+  max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.vix-common .pl-h2 { font-size: clamp(40px, 4.2vw, 56px); max-width: 20ch; }
+.vix-common .pl-lead { max-width: 62ch; }
+
+/* ---------------- Conversation section ---------------- */
+.vix-conv {
+  padding: 160px 40px 180px;
+  border-top: 1px solid var(--divider);
+  position: relative;
+  text-align: center;
+}
+.vix-conv-inner {
+  max-width: 820px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.vix-conv .pl-eyebrow { justify-content: center; }
+.vix-conv h2 {
+  font-size: clamp(34px, 3.6vw, 48px);
+  line-height: 1.1; letter-spacing: -0.028em;
+  font-weight: 500; color: var(--fg-0, #f4f4f4);
+  margin: 0 0 24px; text-wrap: balance;
+  max-width: 22ch; margin-left: auto; margin-right: auto;
+}
+.vix-conv p {
+  font-size: clamp(17px, 1.3vw, 20px); line-height: 1.55;
+  color: var(--fg-2, #aaa);
+  max-width: 58ch; margin: 0 auto 40px;
+}
+.vix-conv .pl-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 14px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--fg-0, #f4f4f4);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--fg-2, #aaa);
+  text-decoration: none;
+  transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.vix-conv .pl-cta:hover { color: #fff; border-color: #fff; }
+.vix-conv .pl-cta .arr { transition: transform 200ms var(--ease-out); }
+.vix-conv .pl-cta:hover .arr { transform: translateX(4px); }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px) {
+  .vix-grid { grid-template-columns: 1fr; gap: 20px; }
+  .vix-card { padding: 32px 28px 28px; min-height: 320px; }
+  .vix-grid-sec, .vix-common, .vix-conv { padding-left: 20px; padding-right: 20px; }
+  .vix-hero { padding: 0 20px; }
+}
