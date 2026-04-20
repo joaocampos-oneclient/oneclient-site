@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://1-client.com/sitemap.xml
